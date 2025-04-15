@@ -92,6 +92,26 @@ app.post('/api/users/:userId/tests', async (req, res) => {
   }
 });
 
+app.delete("/api/users/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    // First delete all tests associated with the user
+    await prisma.test.deleteMany({
+      where: { userId }
+    });
+
+    // Then delete the user
+    await prisma.user.delete({
+      where: { id: userId }
+    });
+
+    res.status(204).end();
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ error: "Failed to delete user" });
+  }
+});
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

@@ -25,6 +25,23 @@ export default function UserList({ refreshTrigger }) {
     fetchUsers();
   }, [refreshTrigger]);
 
+  const handleDeleteUser = async (userId) => {
+    if (window.confirm("Tem a certeza que deseja eliminar este utilizador?")) {
+      try {
+        const response = await fetch(`http://localhost:4000/api/users/${userId}`, {
+          method: "DELETE",
+        });
+        
+        if (!response.ok) throw new Error("Failed to delete user");
+        
+        // Remove the user from the local state to update the UI
+        setUsers(users.filter(user => user.id !== userId));
+      } catch (err) {
+        setError(err.message);
+      }
+    }
+  };
+
   const filteredUsers = users.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -64,20 +81,26 @@ export default function UserList({ refreshTrigger }) {
                     </div>
                   </div>
                   <div style={actionButtonsStyle}>
-                  <Link
-  to={`/user/${user.id}`}
-  style={profileButtonStyle}
-  state={{ user }}  // Pass the user data as state
->
-  Perfil
-</Link>
-<Link
-  to={`/user/${user.id}/new-test`}
-  style={testButtonStyle}
-  state={{ user }}  // Pass the user data as state
->
-  Novo Teste
-</Link>
+                    <Link
+                      to={`/user/${user.id}`}
+                      style={profileButtonStyle}
+                      state={{ user }}
+                    >
+                      Perfil
+                    </Link>
+                    <Link
+                      to={`/user/${user.id}/new-test`}
+                      style={testButtonStyle}
+                      state={{ user }}
+                    >
+                      Novo Teste
+                    </Link>
+                    <button
+                      onClick={() => handleDeleteUser(user.id)}
+                      style={deleteButtonStyle}
+                    >
+                      Eliminar
+                    </button>
                   </div>
                 </div>
               </li>
@@ -166,5 +189,15 @@ const testButtonStyle = {
   color: "white",
   borderRadius: "4px",
   textDecoration: "none",
+  fontSize: "0.9rem",
+};
+
+const deleteButtonStyle = {
+  padding: "0.5rem 1rem",
+  background: "#f44336",
+  color: "white",
+  borderRadius: "4px",
+  border: "none",
+  cursor: "pointer",
   fontSize: "0.9rem",
 };
