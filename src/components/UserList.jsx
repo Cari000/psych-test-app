@@ -1,14 +1,28 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function UserList({ refreshTrigger }) {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data))
-      .catch((err) => console.error("Erro ao buscar utilizadores", err));
+    const fetchUsers = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("http://localhost:4000/api/users");
+        if (!response.ok) throw new Error("Failed to fetch users");
+        const data = await response.json();
+        setUsers(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchUsers();
   }, [refreshTrigger]);
 
   const filteredUsers = users.filter((user) =>
@@ -16,79 +30,141 @@ export default function UserList({ refreshTrigger }) {
   );
 
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        boxSizing: "border-box",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "800px",
-          display: "flex",
-          flexDirection: "column",
-          padding: "1rem",
-          boxSizing: "border-box",
-        }}
-      >
-        <h2 style={{ marginBottom: "1rem", color: "#fff", textAlign: "center" }}>
-          Utilizadores
-        </h2>
+    <div style={containerStyle}>
+      <h2 style={{ marginBottom: "1rem", color: "#fff", textAlign: "center" }}>
+        Utilizadores
+      </h2>
 
-        <input
-          type="text"
-          placeholder="Procurar por nome"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            padding: "0.5rem",
-            width: "100%",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-            marginBottom: "1.5rem",
-            fontSize: "1rem",
-            boxSizing: "border-box",
-          }}
-        />
+      <input
+        type="text"
+        placeholder="Procurar por nome"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={searchInputStyle}
+      />
 
-        {/* Scrollable list container */}
-        <div
-          style={{
-            flexGrow: 1,
-            overflowY: "auto",
-            maxHeight: "50vh",
-            paddingRight: "4px", // prevent scrollbar overlap
-          }}
-        >
-          {filteredUsers.length === 0 ? (
-            <p style={{ color: "#fff" }}>Nenhum utilizador encontrado.</p>
-          ) : (
-            <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {filteredUsers.map((user) => (
-                <li
-                  key={user.id}
-                  style={{
-                    background: "#fff",
-                    borderRadius: "6px",
-                    padding: "1rem",
-                    marginBottom: "1rem",
-                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                    width: "100%",
-                    boxSizing: "border-box",
-                  }}
-                >
-                  <strong>{user.name}</strong>
-                  <br />
-                  <small>{user.tests.length} teste(s)</small>
-                </li>
-              ))}
-            </ul>
-          )}
+      {isLoading ? (
+        <p style={{ color: "#fff", textAlign: "center" }}>A carregar...</p>
+      ) : error ? (
+        <p style={{ color: "#ff4444", textAlign: "center" }}>{error}</p>
+      ) : filteredUsers.length === 0 ? (
+        <p style={{ color: "#fff", textAlign: "center" }}>
+          {searchTerm ? "Nenhum utilizador encontrado" : "Nenhum utilizador registado"}
+        </p>
+      ) : (
+        <div style={listContainerStyle}>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+            {filteredUsers.map((user) => (
+              <li key={user.id} style={userItemStyle}>
+                <div style={userContentStyle}>
+                  <div style={userInfoStyle}>
+                    <strong style={userNameStyle}>{user.name}</strong>
+                    <div style={testCountStyle}>
+                      {user.tests?.length || 0} teste(s)
+                    </div>
+                  </div>
+                  <div style={actionButtonsStyle}>
+                  <Link
+  to={`/user/${user.id}`}
+  style={profileButtonStyle}
+  state={{ user }}  // Pass the user data as state
+>
+  Perfil
+</Link>
+<Link
+  to={`/user/${user.id}/new-test`}
+  style={testButtonStyle}
+  state={{ user }}  // Pass the user data as state
+>
+  Novo Teste
+</Link>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
+      )}
     </div>
   );
 }
+
+// Styles
+const containerStyle = {
+  width: "100%",
+  maxWidth: "1000px",
+  padding: "1.5rem",
+  background: "rgba(255, 255, 255, 0.1)",
+  borderRadius: "12px",
+  backdropFilter: "blur(8px)",
+  margin: "0 auto",
+};
+
+const searchInputStyle = {
+  padding: "0.75rem",
+  width: "100%",
+  border: "1px solid rgba(255, 255, 255, 0.3)",
+  borderRadius: "8px",
+  marginBottom: "1.5rem",
+  fontSize: "1rem",
+  background: "rgba(255, 255, 255, 0.8)",
+};
+
+const listContainerStyle = {
+  maxHeight: "60vh",
+  overflowY: "auto",
+  paddingRight: "8px",
+};
+
+const userItemStyle = {
+  background: "rgba(255, 255, 255, 0.9)",
+  borderRadius: "8px",
+  padding: "1rem",
+  marginBottom: "1rem",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+};
+
+const userContentStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: "1rem",
+};
+
+const userInfoStyle = {
+  flex: 1,
+};
+
+const userNameStyle = {
+  display: "block",
+  marginBottom: "0.25rem",
+  fontSize: "1.1rem",
+};
+
+const testCountStyle = {
+  fontSize: "0.85rem",
+  color: "#666",
+};
+
+const actionButtonsStyle = {
+  display: "flex",
+  gap: "0.5rem",
+};
+
+const profileButtonStyle = {
+  padding: "0.5rem 1rem",
+  background: "#2196F3",
+  color: "white",
+  borderRadius: "4px",
+  textDecoration: "none",
+  fontSize: "0.9rem",
+};
+
+const testButtonStyle = {
+  padding: "0.5rem 1rem",
+  background: "#4CAF50",
+  color: "white",
+  borderRadius: "4px",
+  textDecoration: "none",
+  fontSize: "0.9rem",
+};

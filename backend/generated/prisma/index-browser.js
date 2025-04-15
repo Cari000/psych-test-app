@@ -117,32 +117,21 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.PatientScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  dob: 'dob'
-};
-
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.TestScalarFieldEnum = {
   id: 'id',
-  name: 'name',
   type: 'type',
   userId: 'userId',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.TestResultScalarFieldEnum = {
-  id: 'id',
-  patientId: 'patientId',
-  testId: 'testId',
-  dateTaken: 'dateTaken',
+  createdAt: 'createdAt',
   answers: 'answers',
-  score: 'score'
+  scores: 'scores',
+  completedAt: 'completedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -165,12 +154,15 @@ exports.Prisma.JsonNullValueFilter = {
   AnyNull: Prisma.AnyNull
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  Patient: 'Patient',
   User: 'User',
-  Test: 'Test',
-  TestResult: 'TestResult'
+  Test: 'Test'
 };
 
 /**

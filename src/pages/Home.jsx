@@ -92,19 +92,19 @@ export default function Home() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
-          alignItems: "stretch", /* Ensure it stretches to full width */
+          alignItems: "stretch", 
           minHeight: "100vh",
           minWidth: "100vw",
-          padding: "0", // Remove padding from outer wrapper for full width/height
+          padding: "0", 
           fontFamily: "sans-serif",
           boxSizing: "border-box",
           position: "relative",
         }}
       >
-        {/* Aurora Light Effect as background */}
+        {}
         <div className="aurora-background" />
 
-        {/* Main Content Wrapper */}
+        {}
         <div className="content-wrapper">
           <h1>Sistema de Avaliação Psicológica</h1>
 

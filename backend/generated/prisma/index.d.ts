@@ -14,11 +14,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Patient
- * 
- */
-export type Patient = $Result.DefaultSelection<Prisma.$PatientPayload>
-/**
  * Model User
  * 
  */
@@ -28,11 +23,6 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type Test = $Result.DefaultSelection<Prisma.$TestPayload>
-/**
- * Model TestResult
- * 
- */
-export type TestResult = $Result.DefaultSelection<Prisma.$TestResultPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -41,8 +31,8 @@ export type TestResult = $Result.DefaultSelection<Prisma.$TestResultPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Patients
- * const patients = await prisma.patient.findMany()
+ * // Fetch zero or more Users
+ * const users = await prisma.user.findMany()
  * ```
  *
  *
@@ -62,8 +52,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Patients
-   * const patients = await prisma.patient.findMany()
+   * // Fetch zero or more Users
+   * const users = await prisma.user.findMany()
    * ```
    *
    *
@@ -160,16 +150,6 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.patient`: Exposes CRUD operations for the **Patient** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Patients
-    * const patients = await prisma.patient.findMany()
-    * ```
-    */
-  get patient(): Prisma.PatientDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -188,16 +168,6 @@ export class PrismaClient<
     * ```
     */
   get test(): Prisma.TestDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.testResult`: Exposes CRUD operations for the **TestResult** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more TestResults
-    * const testResults = await prisma.testResult.findMany()
-    * ```
-    */
-  get testResult(): Prisma.TestResultDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -638,10 +608,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Patient: 'Patient',
     User: 'User',
-    Test: 'Test',
-    TestResult: 'TestResult'
+    Test: 'Test'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,84 +628,10 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "patient" | "user" | "test" | "testResult"
+      modelProps: "user" | "test"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Patient: {
-        payload: Prisma.$PatientPayload<ExtArgs>
-        fields: Prisma.PatientFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.PatientFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.PatientFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>
-          }
-          findFirst: {
-            args: Prisma.PatientFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.PatientFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>
-          }
-          findMany: {
-            args: Prisma.PatientFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>[]
-          }
-          create: {
-            args: Prisma.PatientCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>
-          }
-          createMany: {
-            args: Prisma.PatientCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.PatientCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>[]
-          }
-          delete: {
-            args: Prisma.PatientDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>
-          }
-          update: {
-            args: Prisma.PatientUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>
-          }
-          deleteMany: {
-            args: Prisma.PatientDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.PatientUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.PatientUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>[]
-          }
-          upsert: {
-            args: Prisma.PatientUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PatientPayload>
-          }
-          aggregate: {
-            args: Prisma.PatientAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePatient>
-          }
-          groupBy: {
-            args: Prisma.PatientGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PatientGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.PatientCountArgs<ExtArgs>
-            result: $Utils.Optional<PatientCountAggregateOutputType> | number
-          }
-        }
-      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -886,80 +780,6 @@ export namespace Prisma {
           }
         }
       }
-      TestResult: {
-        payload: Prisma.$TestResultPayload<ExtArgs>
-        fields: Prisma.TestResultFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.TestResultFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.TestResultFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>
-          }
-          findFirst: {
-            args: Prisma.TestResultFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.TestResultFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>
-          }
-          findMany: {
-            args: Prisma.TestResultFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>[]
-          }
-          create: {
-            args: Prisma.TestResultCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>
-          }
-          createMany: {
-            args: Prisma.TestResultCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.TestResultCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>[]
-          }
-          delete: {
-            args: Prisma.TestResultDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>
-          }
-          update: {
-            args: Prisma.TestResultUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>
-          }
-          deleteMany: {
-            args: Prisma.TestResultDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.TestResultUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.TestResultUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>[]
-          }
-          upsert: {
-            args: Prisma.TestResultUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TestResultPayload>
-          }
-          aggregate: {
-            args: Prisma.TestResultAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTestResult>
-          }
-          groupBy: {
-            args: Prisma.TestResultGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TestResultGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.TestResultCountArgs<ExtArgs>
-            result: $Utils.Optional<TestResultCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -1044,10 +864,8 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    patient?: PatientOmit
     user?: UserOmit
     test?: TestOmit
-    testResult?: TestResultOmit
   }
 
   /* Types for Logging */
@@ -1138,37 +956,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type PatientCountOutputType
-   */
-
-  export type PatientCountOutputType = {
-    tests: number
-  }
-
-  export type PatientCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tests?: boolean | PatientCountOutputTypeCountTestsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * PatientCountOutputType without action
-   */
-  export type PatientCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PatientCountOutputType
-     */
-    select?: PatientCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * PatientCountOutputType without action
-   */
-  export type PatientCountOutputTypeCountTestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestResultWhereInput
-  }
-
-
-  /**
    * Count Type UserCountOutputType
    */
 
@@ -1200,1083 +987,8 @@ export namespace Prisma {
 
 
   /**
-   * Count Type TestCountOutputType
-   */
-
-  export type TestCountOutputType = {
-    results: number
-  }
-
-  export type TestCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    results?: boolean | TestCountOutputTypeCountResultsArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * TestCountOutputType without action
-   */
-  export type TestCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestCountOutputType
-     */
-    select?: TestCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * TestCountOutputType without action
-   */
-  export type TestCountOutputTypeCountResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestResultWhereInput
-  }
-
-
-  /**
    * Models
    */
-
-  /**
-   * Model Patient
-   */
-
-  export type AggregatePatient = {
-    _count: PatientCountAggregateOutputType | null
-    _min: PatientMinAggregateOutputType | null
-    _max: PatientMaxAggregateOutputType | null
-  }
-
-  export type PatientMinAggregateOutputType = {
-    id: string | null
-    name: string | null
-    dob: Date | null
-  }
-
-  export type PatientMaxAggregateOutputType = {
-    id: string | null
-    name: string | null
-    dob: Date | null
-  }
-
-  export type PatientCountAggregateOutputType = {
-    id: number
-    name: number
-    dob: number
-    _all: number
-  }
-
-
-  export type PatientMinAggregateInputType = {
-    id?: true
-    name?: true
-    dob?: true
-  }
-
-  export type PatientMaxAggregateInputType = {
-    id?: true
-    name?: true
-    dob?: true
-  }
-
-  export type PatientCountAggregateInputType = {
-    id?: true
-    name?: true
-    dob?: true
-    _all?: true
-  }
-
-  export type PatientAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Patient to aggregate.
-     */
-    where?: PatientWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Patients to fetch.
-     */
-    orderBy?: PatientOrderByWithRelationInput | PatientOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: PatientWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Patients from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Patients.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Patients
-    **/
-    _count?: true | PatientCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PatientMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PatientMaxAggregateInputType
-  }
-
-  export type GetPatientAggregateType<T extends PatientAggregateArgs> = {
-        [P in keyof T & keyof AggregatePatient]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePatient[P]>
-      : GetScalarType<T[P], AggregatePatient[P]>
-  }
-
-
-
-
-  export type PatientGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PatientWhereInput
-    orderBy?: PatientOrderByWithAggregationInput | PatientOrderByWithAggregationInput[]
-    by: PatientScalarFieldEnum[] | PatientScalarFieldEnum
-    having?: PatientScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PatientCountAggregateInputType | true
-    _min?: PatientMinAggregateInputType
-    _max?: PatientMaxAggregateInputType
-  }
-
-  export type PatientGroupByOutputType = {
-    id: string
-    name: string
-    dob: Date
-    _count: PatientCountAggregateOutputType | null
-    _min: PatientMinAggregateOutputType | null
-    _max: PatientMaxAggregateOutputType | null
-  }
-
-  type GetPatientGroupByPayload<T extends PatientGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PatientGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PatientGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PatientGroupByOutputType[P]>
-            : GetScalarType<T[P], PatientGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type PatientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    dob?: boolean
-    tests?: boolean | Patient$testsArgs<ExtArgs>
-    _count?: boolean | PatientCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["patient"]>
-
-  export type PatientSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    dob?: boolean
-  }, ExtArgs["result"]["patient"]>
-
-  export type PatientSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    dob?: boolean
-  }, ExtArgs["result"]["patient"]>
-
-  export type PatientSelectScalar = {
-    id?: boolean
-    name?: boolean
-    dob?: boolean
-  }
-
-  export type PatientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "dob", ExtArgs["result"]["patient"]>
-  export type PatientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tests?: boolean | Patient$testsArgs<ExtArgs>
-    _count?: boolean | PatientCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type PatientIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type PatientIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-
-  export type $PatientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Patient"
-    objects: {
-      tests: Prisma.$TestResultPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      name: string
-      dob: Date
-    }, ExtArgs["result"]["patient"]>
-    composites: {}
-  }
-
-  type PatientGetPayload<S extends boolean | null | undefined | PatientDefaultArgs> = $Result.GetResult<Prisma.$PatientPayload, S>
-
-  type PatientCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PatientFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PatientCountAggregateInputType | true
-    }
-
-  export interface PatientDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Patient'], meta: { name: 'Patient' } }
-    /**
-     * Find zero or one Patient that matches the filter.
-     * @param {PatientFindUniqueArgs} args - Arguments to find a Patient
-     * @example
-     * // Get one Patient
-     * const patient = await prisma.patient.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends PatientFindUniqueArgs>(args: SelectSubset<T, PatientFindUniqueArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Patient that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {PatientFindUniqueOrThrowArgs} args - Arguments to find a Patient
-     * @example
-     * // Get one Patient
-     * const patient = await prisma.patient.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends PatientFindUniqueOrThrowArgs>(args: SelectSubset<T, PatientFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Patient that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientFindFirstArgs} args - Arguments to find a Patient
-     * @example
-     * // Get one Patient
-     * const patient = await prisma.patient.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends PatientFindFirstArgs>(args?: SelectSubset<T, PatientFindFirstArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Patient that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientFindFirstOrThrowArgs} args - Arguments to find a Patient
-     * @example
-     * // Get one Patient
-     * const patient = await prisma.patient.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends PatientFindFirstOrThrowArgs>(args?: SelectSubset<T, PatientFindFirstOrThrowArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Patients that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Patients
-     * const patients = await prisma.patient.findMany()
-     * 
-     * // Get first 10 Patients
-     * const patients = await prisma.patient.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const patientWithIdOnly = await prisma.patient.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends PatientFindManyArgs>(args?: SelectSubset<T, PatientFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Patient.
-     * @param {PatientCreateArgs} args - Arguments to create a Patient.
-     * @example
-     * // Create one Patient
-     * const Patient = await prisma.patient.create({
-     *   data: {
-     *     // ... data to create a Patient
-     *   }
-     * })
-     * 
-     */
-    create<T extends PatientCreateArgs>(args: SelectSubset<T, PatientCreateArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Patients.
-     * @param {PatientCreateManyArgs} args - Arguments to create many Patients.
-     * @example
-     * // Create many Patients
-     * const patient = await prisma.patient.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends PatientCreateManyArgs>(args?: SelectSubset<T, PatientCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Patients and returns the data saved in the database.
-     * @param {PatientCreateManyAndReturnArgs} args - Arguments to create many Patients.
-     * @example
-     * // Create many Patients
-     * const patient = await prisma.patient.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Patients and only return the `id`
-     * const patientWithIdOnly = await prisma.patient.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends PatientCreateManyAndReturnArgs>(args?: SelectSubset<T, PatientCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Patient.
-     * @param {PatientDeleteArgs} args - Arguments to delete one Patient.
-     * @example
-     * // Delete one Patient
-     * const Patient = await prisma.patient.delete({
-     *   where: {
-     *     // ... filter to delete one Patient
-     *   }
-     * })
-     * 
-     */
-    delete<T extends PatientDeleteArgs>(args: SelectSubset<T, PatientDeleteArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Patient.
-     * @param {PatientUpdateArgs} args - Arguments to update one Patient.
-     * @example
-     * // Update one Patient
-     * const patient = await prisma.patient.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends PatientUpdateArgs>(args: SelectSubset<T, PatientUpdateArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Patients.
-     * @param {PatientDeleteManyArgs} args - Arguments to filter Patients to delete.
-     * @example
-     * // Delete a few Patients
-     * const { count } = await prisma.patient.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends PatientDeleteManyArgs>(args?: SelectSubset<T, PatientDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Patients.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Patients
-     * const patient = await prisma.patient.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends PatientUpdateManyArgs>(args: SelectSubset<T, PatientUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Patients and returns the data updated in the database.
-     * @param {PatientUpdateManyAndReturnArgs} args - Arguments to update many Patients.
-     * @example
-     * // Update many Patients
-     * const patient = await prisma.patient.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Patients and only return the `id`
-     * const patientWithIdOnly = await prisma.patient.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends PatientUpdateManyAndReturnArgs>(args: SelectSubset<T, PatientUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Patient.
-     * @param {PatientUpsertArgs} args - Arguments to update or create a Patient.
-     * @example
-     * // Update or create a Patient
-     * const patient = await prisma.patient.upsert({
-     *   create: {
-     *     // ... data to create a Patient
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Patient we want to update
-     *   }
-     * })
-     */
-    upsert<T extends PatientUpsertArgs>(args: SelectSubset<T, PatientUpsertArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Patients.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientCountArgs} args - Arguments to filter Patients to count.
-     * @example
-     * // Count the number of Patients
-     * const count = await prisma.patient.count({
-     *   where: {
-     *     // ... the filter for the Patients we want to count
-     *   }
-     * })
-    **/
-    count<T extends PatientCountArgs>(
-      args?: Subset<T, PatientCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PatientCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Patient.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PatientAggregateArgs>(args: Subset<T, PatientAggregateArgs>): Prisma.PrismaPromise<GetPatientAggregateType<T>>
-
-    /**
-     * Group by Patient.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PatientGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends PatientGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PatientGroupByArgs['orderBy'] }
-        : { orderBy?: PatientGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, PatientGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPatientGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Patient model
-   */
-  readonly fields: PatientFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Patient.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__PatientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    tests<T extends Patient$testsArgs<ExtArgs> = {}>(args?: Subset<T, Patient$testsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Patient model
-   */
-  interface PatientFieldRefs {
-    readonly id: FieldRef<"Patient", 'String'>
-    readonly name: FieldRef<"Patient", 'String'>
-    readonly dob: FieldRef<"Patient", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Patient findUnique
-   */
-  export type PatientFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * Filter, which Patient to fetch.
-     */
-    where: PatientWhereUniqueInput
-  }
-
-  /**
-   * Patient findUniqueOrThrow
-   */
-  export type PatientFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * Filter, which Patient to fetch.
-     */
-    where: PatientWhereUniqueInput
-  }
-
-  /**
-   * Patient findFirst
-   */
-  export type PatientFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * Filter, which Patient to fetch.
-     */
-    where?: PatientWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Patients to fetch.
-     */
-    orderBy?: PatientOrderByWithRelationInput | PatientOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Patients.
-     */
-    cursor?: PatientWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Patients from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Patients.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Patients.
-     */
-    distinct?: PatientScalarFieldEnum | PatientScalarFieldEnum[]
-  }
-
-  /**
-   * Patient findFirstOrThrow
-   */
-  export type PatientFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * Filter, which Patient to fetch.
-     */
-    where?: PatientWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Patients to fetch.
-     */
-    orderBy?: PatientOrderByWithRelationInput | PatientOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Patients.
-     */
-    cursor?: PatientWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Patients from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Patients.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Patients.
-     */
-    distinct?: PatientScalarFieldEnum | PatientScalarFieldEnum[]
-  }
-
-  /**
-   * Patient findMany
-   */
-  export type PatientFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * Filter, which Patients to fetch.
-     */
-    where?: PatientWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Patients to fetch.
-     */
-    orderBy?: PatientOrderByWithRelationInput | PatientOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Patients.
-     */
-    cursor?: PatientWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Patients from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Patients.
-     */
-    skip?: number
-    distinct?: PatientScalarFieldEnum | PatientScalarFieldEnum[]
-  }
-
-  /**
-   * Patient create
-   */
-  export type PatientCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Patient.
-     */
-    data: XOR<PatientCreateInput, PatientUncheckedCreateInput>
-  }
-
-  /**
-   * Patient createMany
-   */
-  export type PatientCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Patients.
-     */
-    data: PatientCreateManyInput | PatientCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Patient createManyAndReturn
-   */
-  export type PatientCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * The data used to create many Patients.
-     */
-    data: PatientCreateManyInput | PatientCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Patient update
-   */
-  export type PatientUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Patient.
-     */
-    data: XOR<PatientUpdateInput, PatientUncheckedUpdateInput>
-    /**
-     * Choose, which Patient to update.
-     */
-    where: PatientWhereUniqueInput
-  }
-
-  /**
-   * Patient updateMany
-   */
-  export type PatientUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Patients.
-     */
-    data: XOR<PatientUpdateManyMutationInput, PatientUncheckedUpdateManyInput>
-    /**
-     * Filter which Patients to update
-     */
-    where?: PatientWhereInput
-    /**
-     * Limit how many Patients to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Patient updateManyAndReturn
-   */
-  export type PatientUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * The data used to update Patients.
-     */
-    data: XOR<PatientUpdateManyMutationInput, PatientUncheckedUpdateManyInput>
-    /**
-     * Filter which Patients to update
-     */
-    where?: PatientWhereInput
-    /**
-     * Limit how many Patients to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Patient upsert
-   */
-  export type PatientUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Patient to update in case it exists.
-     */
-    where: PatientWhereUniqueInput
-    /**
-     * In case the Patient found by the `where` argument doesn't exist, create a new Patient with this data.
-     */
-    create: XOR<PatientCreateInput, PatientUncheckedCreateInput>
-    /**
-     * In case the Patient was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<PatientUpdateInput, PatientUncheckedUpdateInput>
-  }
-
-  /**
-   * Patient delete
-   */
-  export type PatientDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-    /**
-     * Filter which Patient to delete.
-     */
-    where: PatientWhereUniqueInput
-  }
-
-  /**
-   * Patient deleteMany
-   */
-  export type PatientDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Patients to delete
-     */
-    where?: PatientWhereInput
-    /**
-     * Limit how many Patients to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Patient.tests
-   */
-  export type Patient$testsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    where?: TestResultWhereInput
-    orderBy?: TestResultOrderByWithRelationInput | TestResultOrderByWithRelationInput[]
-    cursor?: TestResultWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TestResultScalarFieldEnum | TestResultScalarFieldEnum[]
-  }
-
-  /**
-   * Patient without action
-   */
-  export type PatientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Patient
-     */
-    select?: PatientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Patient
-     */
-    omit?: PatientOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PatientInclude<ExtArgs> | null
-  }
-
 
   /**
    * Model User
@@ -2284,58 +996,52 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UserSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type UserMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     name: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     name: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
-  export type UserAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type UserSumAggregateInputType = {
-    id?: true
-  }
-
   export type UserMinAggregateInputType = {
     id?: true
     name?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     name?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     name?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -2377,18 +1083,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UserAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -2419,18 +1113,16 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
 
   export type UserGroupByOutputType = {
-    id: number
+    id: string
     name: string
+    createdAt: Date
+    updatedAt: Date
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -2452,6 +1144,8 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     tests?: boolean | User$testsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -2459,19 +1153,25 @@ export namespace Prisma {
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     name?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tests?: boolean | User$testsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -2485,8 +1185,10 @@ export namespace Prisma {
       tests: Prisma.$TestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       name: string
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2911,8 +1613,10 @@ export namespace Prisma {
    * Fields of the User model
    */
   interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'Int'>
+    readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
+    readonly createdAt: FieldRef<"User", 'DateTime'>
+    readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -3349,80 +2053,62 @@ export namespace Prisma {
 
   export type AggregateTest = {
     _count: TestCountAggregateOutputType | null
-    _avg: TestAvgAggregateOutputType | null
-    _sum: TestSumAggregateOutputType | null
     _min: TestMinAggregateOutputType | null
     _max: TestMaxAggregateOutputType | null
   }
 
-  export type TestAvgAggregateOutputType = {
-    id: number | null
-    userId: number | null
-  }
-
-  export type TestSumAggregateOutputType = {
-    id: number | null
-    userId: number | null
-  }
-
   export type TestMinAggregateOutputType = {
-    id: number | null
-    name: string | null
+    id: string | null
     type: string | null
-    userId: number | null
+    userId: string | null
     createdAt: Date | null
+    completedAt: Date | null
   }
 
   export type TestMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
+    id: string | null
     type: string | null
-    userId: number | null
+    userId: string | null
     createdAt: Date | null
+    completedAt: Date | null
   }
 
   export type TestCountAggregateOutputType = {
     id: number
-    name: number
     type: number
     userId: number
     createdAt: number
+    answers: number
+    scores: number
+    completedAt: number
     _all: number
   }
 
 
-  export type TestAvgAggregateInputType = {
-    id?: true
-    userId?: true
-  }
-
-  export type TestSumAggregateInputType = {
-    id?: true
-    userId?: true
-  }
-
   export type TestMinAggregateInputType = {
     id?: true
-    name?: true
     type?: true
     userId?: true
     createdAt?: true
+    completedAt?: true
   }
 
   export type TestMaxAggregateInputType = {
     id?: true
-    name?: true
     type?: true
     userId?: true
     createdAt?: true
+    completedAt?: true
   }
 
   export type TestCountAggregateInputType = {
     id?: true
-    name?: true
     type?: true
     userId?: true
     createdAt?: true
+    answers?: true
+    scores?: true
+    completedAt?: true
     _all?: true
   }
 
@@ -3464,18 +2150,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: TestAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: TestSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: TestMinAggregateInputType
@@ -3506,21 +2180,19 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: TestCountAggregateInputType | true
-    _avg?: TestAvgAggregateInputType
-    _sum?: TestSumAggregateInputType
     _min?: TestMinAggregateInputType
     _max?: TestMaxAggregateInputType
   }
 
   export type TestGroupByOutputType = {
-    id: number
-    name: string
+    id: string
     type: string
-    userId: number
+    userId: string
     createdAt: Date
+    answers: JsonValue
+    scores: JsonValue
+    completedAt: Date | null
     _count: TestCountAggregateOutputType | null
-    _avg: TestAvgAggregateOutputType | null
-    _sum: TestSumAggregateOutputType | null
     _min: TestMinAggregateOutputType | null
     _max: TestMaxAggregateOutputType | null
   }
@@ -3541,46 +2213,50 @@ export namespace Prisma {
 
   export type TestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     type?: boolean
     userId?: boolean
     createdAt?: boolean
+    answers?: boolean
+    scores?: boolean
+    completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    results?: boolean | Test$resultsArgs<ExtArgs>
-    _count?: boolean | TestCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["test"]>
 
   export type TestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     type?: boolean
     userId?: boolean
     createdAt?: boolean
+    answers?: boolean
+    scores?: boolean
+    completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["test"]>
 
   export type TestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    name?: boolean
     type?: boolean
     userId?: boolean
     createdAt?: boolean
+    answers?: boolean
+    scores?: boolean
+    completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["test"]>
 
   export type TestSelectScalar = {
     id?: boolean
-    name?: boolean
     type?: boolean
     userId?: boolean
     createdAt?: boolean
+    answers?: boolean
+    scores?: boolean
+    completedAt?: boolean
   }
 
-  export type TestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "type" | "userId" | "createdAt", ExtArgs["result"]["test"]>
+  export type TestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "userId" | "createdAt" | "answers" | "scores" | "completedAt", ExtArgs["result"]["test"]>
   export type TestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    results?: boolean | Test$resultsArgs<ExtArgs>
-    _count?: boolean | TestCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3593,14 +2269,15 @@ export namespace Prisma {
     name: "Test"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      results: Prisma.$TestResultPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
+      id: string
       type: string
-      userId: number
+      userId: string
       createdAt: Date
+      answers: Prisma.JsonValue
+      scores: Prisma.JsonValue
+      completedAt: Date | null
     }, ExtArgs["result"]["test"]>
     composites: {}
   }
@@ -3996,7 +2673,6 @@ export namespace Prisma {
   export interface Prisma__TestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    results<T extends Test$resultsArgs<ExtArgs> = {}>(args?: Subset<T, Test$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4026,11 +2702,13 @@ export namespace Prisma {
    * Fields of the Test model
    */
   interface TestFieldRefs {
-    readonly id: FieldRef<"Test", 'Int'>
-    readonly name: FieldRef<"Test", 'String'>
+    readonly id: FieldRef<"Test", 'String'>
     readonly type: FieldRef<"Test", 'String'>
-    readonly userId: FieldRef<"Test", 'Int'>
+    readonly userId: FieldRef<"Test", 'String'>
     readonly createdAt: FieldRef<"Test", 'DateTime'>
+    readonly answers: FieldRef<"Test", 'Json'>
+    readonly scores: FieldRef<"Test", 'Json'>
+    readonly completedAt: FieldRef<"Test", 'DateTime'>
   }
     
 
@@ -4427,30 +3105,6 @@ export namespace Prisma {
   }
 
   /**
-   * Test.results
-   */
-  export type Test$resultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    where?: TestResultWhereInput
-    orderBy?: TestResultOrderByWithRelationInput | TestResultOrderByWithRelationInput[]
-    cursor?: TestResultWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TestResultScalarFieldEnum | TestResultScalarFieldEnum[]
-  }
-
-  /**
    * Test without action
    */
   export type TestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4470,1119 +3124,6 @@ export namespace Prisma {
 
 
   /**
-   * Model TestResult
-   */
-
-  export type AggregateTestResult = {
-    _count: TestResultCountAggregateOutputType | null
-    _avg: TestResultAvgAggregateOutputType | null
-    _sum: TestResultSumAggregateOutputType | null
-    _min: TestResultMinAggregateOutputType | null
-    _max: TestResultMaxAggregateOutputType | null
-  }
-
-  export type TestResultAvgAggregateOutputType = {
-    testId: number | null
-    score: number | null
-  }
-
-  export type TestResultSumAggregateOutputType = {
-    testId: number | null
-    score: number | null
-  }
-
-  export type TestResultMinAggregateOutputType = {
-    id: string | null
-    patientId: string | null
-    testId: number | null
-    dateTaken: Date | null
-    score: number | null
-  }
-
-  export type TestResultMaxAggregateOutputType = {
-    id: string | null
-    patientId: string | null
-    testId: number | null
-    dateTaken: Date | null
-    score: number | null
-  }
-
-  export type TestResultCountAggregateOutputType = {
-    id: number
-    patientId: number
-    testId: number
-    dateTaken: number
-    answers: number
-    score: number
-    _all: number
-  }
-
-
-  export type TestResultAvgAggregateInputType = {
-    testId?: true
-    score?: true
-  }
-
-  export type TestResultSumAggregateInputType = {
-    testId?: true
-    score?: true
-  }
-
-  export type TestResultMinAggregateInputType = {
-    id?: true
-    patientId?: true
-    testId?: true
-    dateTaken?: true
-    score?: true
-  }
-
-  export type TestResultMaxAggregateInputType = {
-    id?: true
-    patientId?: true
-    testId?: true
-    dateTaken?: true
-    score?: true
-  }
-
-  export type TestResultCountAggregateInputType = {
-    id?: true
-    patientId?: true
-    testId?: true
-    dateTaken?: true
-    answers?: true
-    score?: true
-    _all?: true
-  }
-
-  export type TestResultAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which TestResult to aggregate.
-     */
-    where?: TestResultWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of TestResults to fetch.
-     */
-    orderBy?: TestResultOrderByWithRelationInput | TestResultOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: TestResultWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` TestResults from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` TestResults.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned TestResults
-    **/
-    _count?: true | TestResultCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: TestResultAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: TestResultSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: TestResultMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: TestResultMaxAggregateInputType
-  }
-
-  export type GetTestResultAggregateType<T extends TestResultAggregateArgs> = {
-        [P in keyof T & keyof AggregateTestResult]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTestResult[P]>
-      : GetScalarType<T[P], AggregateTestResult[P]>
-  }
-
-
-
-
-  export type TestResultGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TestResultWhereInput
-    orderBy?: TestResultOrderByWithAggregationInput | TestResultOrderByWithAggregationInput[]
-    by: TestResultScalarFieldEnum[] | TestResultScalarFieldEnum
-    having?: TestResultScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: TestResultCountAggregateInputType | true
-    _avg?: TestResultAvgAggregateInputType
-    _sum?: TestResultSumAggregateInputType
-    _min?: TestResultMinAggregateInputType
-    _max?: TestResultMaxAggregateInputType
-  }
-
-  export type TestResultGroupByOutputType = {
-    id: string
-    patientId: string
-    testId: number
-    dateTaken: Date
-    answers: JsonValue
-    score: number
-    _count: TestResultCountAggregateOutputType | null
-    _avg: TestResultAvgAggregateOutputType | null
-    _sum: TestResultSumAggregateOutputType | null
-    _min: TestResultMinAggregateOutputType | null
-    _max: TestResultMaxAggregateOutputType | null
-  }
-
-  type GetTestResultGroupByPayload<T extends TestResultGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<TestResultGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof TestResultGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TestResultGroupByOutputType[P]>
-            : GetScalarType<T[P], TestResultGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type TestResultSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    patientId?: boolean
-    testId?: boolean
-    dateTaken?: boolean
-    answers?: boolean
-    score?: boolean
-    patient?: boolean | PatientDefaultArgs<ExtArgs>
-    test?: boolean | TestDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["testResult"]>
-
-  export type TestResultSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    patientId?: boolean
-    testId?: boolean
-    dateTaken?: boolean
-    answers?: boolean
-    score?: boolean
-    patient?: boolean | PatientDefaultArgs<ExtArgs>
-    test?: boolean | TestDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["testResult"]>
-
-  export type TestResultSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    patientId?: boolean
-    testId?: boolean
-    dateTaken?: boolean
-    answers?: boolean
-    score?: boolean
-    patient?: boolean | PatientDefaultArgs<ExtArgs>
-    test?: boolean | TestDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["testResult"]>
-
-  export type TestResultSelectScalar = {
-    id?: boolean
-    patientId?: boolean
-    testId?: boolean
-    dateTaken?: boolean
-    answers?: boolean
-    score?: boolean
-  }
-
-  export type TestResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "patientId" | "testId" | "dateTaken" | "answers" | "score", ExtArgs["result"]["testResult"]>
-  export type TestResultInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patient?: boolean | PatientDefaultArgs<ExtArgs>
-    test?: boolean | TestDefaultArgs<ExtArgs>
-  }
-  export type TestResultIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patient?: boolean | PatientDefaultArgs<ExtArgs>
-    test?: boolean | TestDefaultArgs<ExtArgs>
-  }
-  export type TestResultIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    patient?: boolean | PatientDefaultArgs<ExtArgs>
-    test?: boolean | TestDefaultArgs<ExtArgs>
-  }
-
-  export type $TestResultPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "TestResult"
-    objects: {
-      patient: Prisma.$PatientPayload<ExtArgs>
-      test: Prisma.$TestPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      patientId: string
-      testId: number
-      dateTaken: Date
-      answers: Prisma.JsonValue
-      score: number
-    }, ExtArgs["result"]["testResult"]>
-    composites: {}
-  }
-
-  type TestResultGetPayload<S extends boolean | null | undefined | TestResultDefaultArgs> = $Result.GetResult<Prisma.$TestResultPayload, S>
-
-  type TestResultCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TestResultFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TestResultCountAggregateInputType | true
-    }
-
-  export interface TestResultDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TestResult'], meta: { name: 'TestResult' } }
-    /**
-     * Find zero or one TestResult that matches the filter.
-     * @param {TestResultFindUniqueArgs} args - Arguments to find a TestResult
-     * @example
-     * // Get one TestResult
-     * const testResult = await prisma.testResult.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends TestResultFindUniqueArgs>(args: SelectSubset<T, TestResultFindUniqueArgs<ExtArgs>>): Prisma__TestResultClient<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one TestResult that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {TestResultFindUniqueOrThrowArgs} args - Arguments to find a TestResult
-     * @example
-     * // Get one TestResult
-     * const testResult = await prisma.testResult.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends TestResultFindUniqueOrThrowArgs>(args: SelectSubset<T, TestResultFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TestResultClient<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first TestResult that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestResultFindFirstArgs} args - Arguments to find a TestResult
-     * @example
-     * // Get one TestResult
-     * const testResult = await prisma.testResult.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends TestResultFindFirstArgs>(args?: SelectSubset<T, TestResultFindFirstArgs<ExtArgs>>): Prisma__TestResultClient<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first TestResult that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestResultFindFirstOrThrowArgs} args - Arguments to find a TestResult
-     * @example
-     * // Get one TestResult
-     * const testResult = await prisma.testResult.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends TestResultFindFirstOrThrowArgs>(args?: SelectSubset<T, TestResultFindFirstOrThrowArgs<ExtArgs>>): Prisma__TestResultClient<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more TestResults that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestResultFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all TestResults
-     * const testResults = await prisma.testResult.findMany()
-     * 
-     * // Get first 10 TestResults
-     * const testResults = await prisma.testResult.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const testResultWithIdOnly = await prisma.testResult.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends TestResultFindManyArgs>(args?: SelectSubset<T, TestResultFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a TestResult.
-     * @param {TestResultCreateArgs} args - Arguments to create a TestResult.
-     * @example
-     * // Create one TestResult
-     * const TestResult = await prisma.testResult.create({
-     *   data: {
-     *     // ... data to create a TestResult
-     *   }
-     * })
-     * 
-     */
-    create<T extends TestResultCreateArgs>(args: SelectSubset<T, TestResultCreateArgs<ExtArgs>>): Prisma__TestResultClient<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many TestResults.
-     * @param {TestResultCreateManyArgs} args - Arguments to create many TestResults.
-     * @example
-     * // Create many TestResults
-     * const testResult = await prisma.testResult.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends TestResultCreateManyArgs>(args?: SelectSubset<T, TestResultCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many TestResults and returns the data saved in the database.
-     * @param {TestResultCreateManyAndReturnArgs} args - Arguments to create many TestResults.
-     * @example
-     * // Create many TestResults
-     * const testResult = await prisma.testResult.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many TestResults and only return the `id`
-     * const testResultWithIdOnly = await prisma.testResult.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends TestResultCreateManyAndReturnArgs>(args?: SelectSubset<T, TestResultCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a TestResult.
-     * @param {TestResultDeleteArgs} args - Arguments to delete one TestResult.
-     * @example
-     * // Delete one TestResult
-     * const TestResult = await prisma.testResult.delete({
-     *   where: {
-     *     // ... filter to delete one TestResult
-     *   }
-     * })
-     * 
-     */
-    delete<T extends TestResultDeleteArgs>(args: SelectSubset<T, TestResultDeleteArgs<ExtArgs>>): Prisma__TestResultClient<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one TestResult.
-     * @param {TestResultUpdateArgs} args - Arguments to update one TestResult.
-     * @example
-     * // Update one TestResult
-     * const testResult = await prisma.testResult.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends TestResultUpdateArgs>(args: SelectSubset<T, TestResultUpdateArgs<ExtArgs>>): Prisma__TestResultClient<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more TestResults.
-     * @param {TestResultDeleteManyArgs} args - Arguments to filter TestResults to delete.
-     * @example
-     * // Delete a few TestResults
-     * const { count } = await prisma.testResult.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends TestResultDeleteManyArgs>(args?: SelectSubset<T, TestResultDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more TestResults.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestResultUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many TestResults
-     * const testResult = await prisma.testResult.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends TestResultUpdateManyArgs>(args: SelectSubset<T, TestResultUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more TestResults and returns the data updated in the database.
-     * @param {TestResultUpdateManyAndReturnArgs} args - Arguments to update many TestResults.
-     * @example
-     * // Update many TestResults
-     * const testResult = await prisma.testResult.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more TestResults and only return the `id`
-     * const testResultWithIdOnly = await prisma.testResult.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends TestResultUpdateManyAndReturnArgs>(args: SelectSubset<T, TestResultUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one TestResult.
-     * @param {TestResultUpsertArgs} args - Arguments to update or create a TestResult.
-     * @example
-     * // Update or create a TestResult
-     * const testResult = await prisma.testResult.upsert({
-     *   create: {
-     *     // ... data to create a TestResult
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the TestResult we want to update
-     *   }
-     * })
-     */
-    upsert<T extends TestResultUpsertArgs>(args: SelectSubset<T, TestResultUpsertArgs<ExtArgs>>): Prisma__TestResultClient<$Result.GetResult<Prisma.$TestResultPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of TestResults.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestResultCountArgs} args - Arguments to filter TestResults to count.
-     * @example
-     * // Count the number of TestResults
-     * const count = await prisma.testResult.count({
-     *   where: {
-     *     // ... the filter for the TestResults we want to count
-     *   }
-     * })
-    **/
-    count<T extends TestResultCountArgs>(
-      args?: Subset<T, TestResultCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], TestResultCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a TestResult.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestResultAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends TestResultAggregateArgs>(args: Subset<T, TestResultAggregateArgs>): Prisma.PrismaPromise<GetTestResultAggregateType<T>>
-
-    /**
-     * Group by TestResult.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TestResultGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends TestResultGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TestResultGroupByArgs['orderBy'] }
-        : { orderBy?: TestResultGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, TestResultGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTestResultGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the TestResult model
-   */
-  readonly fields: TestResultFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for TestResult.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__TestResultClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    patient<T extends PatientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PatientDefaultArgs<ExtArgs>>): Prisma__PatientClient<$Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    test<T extends TestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TestDefaultArgs<ExtArgs>>): Prisma__TestClient<$Result.GetResult<Prisma.$TestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the TestResult model
-   */
-  interface TestResultFieldRefs {
-    readonly id: FieldRef<"TestResult", 'String'>
-    readonly patientId: FieldRef<"TestResult", 'String'>
-    readonly testId: FieldRef<"TestResult", 'Int'>
-    readonly dateTaken: FieldRef<"TestResult", 'DateTime'>
-    readonly answers: FieldRef<"TestResult", 'Json'>
-    readonly score: FieldRef<"TestResult", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * TestResult findUnique
-   */
-  export type TestResultFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * Filter, which TestResult to fetch.
-     */
-    where: TestResultWhereUniqueInput
-  }
-
-  /**
-   * TestResult findUniqueOrThrow
-   */
-  export type TestResultFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * Filter, which TestResult to fetch.
-     */
-    where: TestResultWhereUniqueInput
-  }
-
-  /**
-   * TestResult findFirst
-   */
-  export type TestResultFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * Filter, which TestResult to fetch.
-     */
-    where?: TestResultWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of TestResults to fetch.
-     */
-    orderBy?: TestResultOrderByWithRelationInput | TestResultOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for TestResults.
-     */
-    cursor?: TestResultWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` TestResults from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` TestResults.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of TestResults.
-     */
-    distinct?: TestResultScalarFieldEnum | TestResultScalarFieldEnum[]
-  }
-
-  /**
-   * TestResult findFirstOrThrow
-   */
-  export type TestResultFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * Filter, which TestResult to fetch.
-     */
-    where?: TestResultWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of TestResults to fetch.
-     */
-    orderBy?: TestResultOrderByWithRelationInput | TestResultOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for TestResults.
-     */
-    cursor?: TestResultWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` TestResults from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` TestResults.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of TestResults.
-     */
-    distinct?: TestResultScalarFieldEnum | TestResultScalarFieldEnum[]
-  }
-
-  /**
-   * TestResult findMany
-   */
-  export type TestResultFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * Filter, which TestResults to fetch.
-     */
-    where?: TestResultWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of TestResults to fetch.
-     */
-    orderBy?: TestResultOrderByWithRelationInput | TestResultOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing TestResults.
-     */
-    cursor?: TestResultWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` TestResults from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` TestResults.
-     */
-    skip?: number
-    distinct?: TestResultScalarFieldEnum | TestResultScalarFieldEnum[]
-  }
-
-  /**
-   * TestResult create
-   */
-  export type TestResultCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * The data needed to create a TestResult.
-     */
-    data: XOR<TestResultCreateInput, TestResultUncheckedCreateInput>
-  }
-
-  /**
-   * TestResult createMany
-   */
-  export type TestResultCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many TestResults.
-     */
-    data: TestResultCreateManyInput | TestResultCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * TestResult createManyAndReturn
-   */
-  export type TestResultCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * The data used to create many TestResults.
-     */
-    data: TestResultCreateManyInput | TestResultCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * TestResult update
-   */
-  export type TestResultUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * The data needed to update a TestResult.
-     */
-    data: XOR<TestResultUpdateInput, TestResultUncheckedUpdateInput>
-    /**
-     * Choose, which TestResult to update.
-     */
-    where: TestResultWhereUniqueInput
-  }
-
-  /**
-   * TestResult updateMany
-   */
-  export type TestResultUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update TestResults.
-     */
-    data: XOR<TestResultUpdateManyMutationInput, TestResultUncheckedUpdateManyInput>
-    /**
-     * Filter which TestResults to update
-     */
-    where?: TestResultWhereInput
-    /**
-     * Limit how many TestResults to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * TestResult updateManyAndReturn
-   */
-  export type TestResultUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * The data used to update TestResults.
-     */
-    data: XOR<TestResultUpdateManyMutationInput, TestResultUncheckedUpdateManyInput>
-    /**
-     * Filter which TestResults to update
-     */
-    where?: TestResultWhereInput
-    /**
-     * Limit how many TestResults to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * TestResult upsert
-   */
-  export type TestResultUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * The filter to search for the TestResult to update in case it exists.
-     */
-    where: TestResultWhereUniqueInput
-    /**
-     * In case the TestResult found by the `where` argument doesn't exist, create a new TestResult with this data.
-     */
-    create: XOR<TestResultCreateInput, TestResultUncheckedCreateInput>
-    /**
-     * In case the TestResult was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<TestResultUpdateInput, TestResultUncheckedUpdateInput>
-  }
-
-  /**
-   * TestResult delete
-   */
-  export type TestResultDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-    /**
-     * Filter which TestResult to delete.
-     */
-    where: TestResultWhereUniqueInput
-  }
-
-  /**
-   * TestResult deleteMany
-   */
-  export type TestResultDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which TestResults to delete
-     */
-    where?: TestResultWhereInput
-    /**
-     * Limit how many TestResults to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * TestResult without action
-   */
-  export type TestResultDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TestResult
-     */
-    select?: TestResultSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TestResult
-     */
-    omit?: TestResultOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TestResultInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Enums
    */
 
@@ -5596,18 +3137,11 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const PatientScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    dob: 'dob'
-  };
-
-  export type PatientScalarFieldEnum = (typeof PatientScalarFieldEnum)[keyof typeof PatientScalarFieldEnum]
-
-
   export const UserScalarFieldEnum: {
     id: 'id',
-    name: 'name'
+    name: 'name',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -5615,25 +3149,15 @@ export namespace Prisma {
 
   export const TestScalarFieldEnum: {
     id: 'id',
-    name: 'name',
     type: 'type',
     userId: 'userId',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    answers: 'answers',
+    scores: 'scores',
+    completedAt: 'completedAt'
   };
 
   export type TestScalarFieldEnum = (typeof TestScalarFieldEnum)[keyof typeof TestScalarFieldEnum]
-
-
-  export const TestResultScalarFieldEnum: {
-    id: 'id',
-    patientId: 'patientId',
-    testId: 'testId',
-    dateTaken: 'dateTaken',
-    answers: 'answers',
-    score: 'score'
-  };
-
-  export type TestResultScalarFieldEnum = (typeof TestResultScalarFieldEnum)[keyof typeof TestResultScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5666,6 +3190,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -5702,20 +3234,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -5730,431 +3248,257 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
+   * Reference to a field of type 'Int'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
   /**
-   * Reference to a field of type 'Float[]'
+   * Reference to a field of type 'Int[]'
    */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
   /**
    * Deep Input Types
    */
 
 
-  export type PatientWhereInput = {
-    AND?: PatientWhereInput | PatientWhereInput[]
-    OR?: PatientWhereInput[]
-    NOT?: PatientWhereInput | PatientWhereInput[]
-    id?: StringFilter<"Patient"> | string
-    name?: StringFilter<"Patient"> | string
-    dob?: DateTimeFilter<"Patient"> | Date | string
-    tests?: TestResultListRelationFilter
-  }
-
-  export type PatientOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    dob?: SortOrder
-    tests?: TestResultOrderByRelationAggregateInput
-  }
-
-  export type PatientWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: PatientWhereInput | PatientWhereInput[]
-    OR?: PatientWhereInput[]
-    NOT?: PatientWhereInput | PatientWhereInput[]
-    name?: StringFilter<"Patient"> | string
-    dob?: DateTimeFilter<"Patient"> | Date | string
-    tests?: TestResultListRelationFilter
-  }, "id">
-
-  export type PatientOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    dob?: SortOrder
-    _count?: PatientCountOrderByAggregateInput
-    _max?: PatientMaxOrderByAggregateInput
-    _min?: PatientMinOrderByAggregateInput
-  }
-
-  export type PatientScalarWhereWithAggregatesInput = {
-    AND?: PatientScalarWhereWithAggregatesInput | PatientScalarWhereWithAggregatesInput[]
-    OR?: PatientScalarWhereWithAggregatesInput[]
-    NOT?: PatientScalarWhereWithAggregatesInput | PatientScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Patient"> | string
-    name?: StringWithAggregatesFilter<"Patient"> | string
-    dob?: DateTimeWithAggregatesFilter<"Patient"> | Date | string
-  }
-
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    id?: IntFilter<"User"> | number
+    id?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
     tests?: TestListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     tests?: TestOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
+    createdAt?: DateTimeFilter<"User"> | Date | string
+    updatedAt?: DateTimeFilter<"User"> | Date | string
     tests?: TestListRelationFilter
   }, "id">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"User"> | number
+    id?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
 
   export type TestWhereInput = {
     AND?: TestWhereInput | TestWhereInput[]
     OR?: TestWhereInput[]
     NOT?: TestWhereInput | TestWhereInput[]
-    id?: IntFilter<"Test"> | number
-    name?: StringFilter<"Test"> | string
+    id?: StringFilter<"Test"> | string
     type?: StringFilter<"Test"> | string
-    userId?: IntFilter<"Test"> | number
+    userId?: StringFilter<"Test"> | string
     createdAt?: DateTimeFilter<"Test"> | Date | string
+    answers?: JsonFilter<"Test">
+    scores?: JsonFilter<"Test">
+    completedAt?: DateTimeNullableFilter<"Test"> | Date | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    results?: TestResultListRelationFilter
   }
 
   export type TestOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
     type?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
+    answers?: SortOrder
+    scores?: SortOrder
+    completedAt?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
-    results?: TestResultOrderByRelationAggregateInput
   }
 
   export type TestWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     AND?: TestWhereInput | TestWhereInput[]
     OR?: TestWhereInput[]
     NOT?: TestWhereInput | TestWhereInput[]
-    name?: StringFilter<"Test"> | string
     type?: StringFilter<"Test"> | string
-    userId?: IntFilter<"Test"> | number
+    userId?: StringFilter<"Test"> | string
     createdAt?: DateTimeFilter<"Test"> | Date | string
+    answers?: JsonFilter<"Test">
+    scores?: JsonFilter<"Test">
+    completedAt?: DateTimeNullableFilter<"Test"> | Date | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    results?: TestResultListRelationFilter
   }, "id">
 
   export type TestOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
     type?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
+    answers?: SortOrder
+    scores?: SortOrder
+    completedAt?: SortOrderInput | SortOrder
     _count?: TestCountOrderByAggregateInput
-    _avg?: TestAvgOrderByAggregateInput
     _max?: TestMaxOrderByAggregateInput
     _min?: TestMinOrderByAggregateInput
-    _sum?: TestSumOrderByAggregateInput
   }
 
   export type TestScalarWhereWithAggregatesInput = {
     AND?: TestScalarWhereWithAggregatesInput | TestScalarWhereWithAggregatesInput[]
     OR?: TestScalarWhereWithAggregatesInput[]
     NOT?: TestScalarWhereWithAggregatesInput | TestScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Test"> | number
-    name?: StringWithAggregatesFilter<"Test"> | string
+    id?: StringWithAggregatesFilter<"Test"> | string
     type?: StringWithAggregatesFilter<"Test"> | string
-    userId?: IntWithAggregatesFilter<"Test"> | number
+    userId?: StringWithAggregatesFilter<"Test"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Test"> | Date | string
-  }
-
-  export type TestResultWhereInput = {
-    AND?: TestResultWhereInput | TestResultWhereInput[]
-    OR?: TestResultWhereInput[]
-    NOT?: TestResultWhereInput | TestResultWhereInput[]
-    id?: StringFilter<"TestResult"> | string
-    patientId?: StringFilter<"TestResult"> | string
-    testId?: IntFilter<"TestResult"> | number
-    dateTaken?: DateTimeFilter<"TestResult"> | Date | string
-    answers?: JsonFilter<"TestResult">
-    score?: IntFilter<"TestResult"> | number
-    patient?: XOR<PatientScalarRelationFilter, PatientWhereInput>
-    test?: XOR<TestScalarRelationFilter, TestWhereInput>
-  }
-
-  export type TestResultOrderByWithRelationInput = {
-    id?: SortOrder
-    patientId?: SortOrder
-    testId?: SortOrder
-    dateTaken?: SortOrder
-    answers?: SortOrder
-    score?: SortOrder
-    patient?: PatientOrderByWithRelationInput
-    test?: TestOrderByWithRelationInput
-  }
-
-  export type TestResultWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: TestResultWhereInput | TestResultWhereInput[]
-    OR?: TestResultWhereInput[]
-    NOT?: TestResultWhereInput | TestResultWhereInput[]
-    patientId?: StringFilter<"TestResult"> | string
-    testId?: IntFilter<"TestResult"> | number
-    dateTaken?: DateTimeFilter<"TestResult"> | Date | string
-    answers?: JsonFilter<"TestResult">
-    score?: IntFilter<"TestResult"> | number
-    patient?: XOR<PatientScalarRelationFilter, PatientWhereInput>
-    test?: XOR<TestScalarRelationFilter, TestWhereInput>
-  }, "id">
-
-  export type TestResultOrderByWithAggregationInput = {
-    id?: SortOrder
-    patientId?: SortOrder
-    testId?: SortOrder
-    dateTaken?: SortOrder
-    answers?: SortOrder
-    score?: SortOrder
-    _count?: TestResultCountOrderByAggregateInput
-    _avg?: TestResultAvgOrderByAggregateInput
-    _max?: TestResultMaxOrderByAggregateInput
-    _min?: TestResultMinOrderByAggregateInput
-    _sum?: TestResultSumOrderByAggregateInput
-  }
-
-  export type TestResultScalarWhereWithAggregatesInput = {
-    AND?: TestResultScalarWhereWithAggregatesInput | TestResultScalarWhereWithAggregatesInput[]
-    OR?: TestResultScalarWhereWithAggregatesInput[]
-    NOT?: TestResultScalarWhereWithAggregatesInput | TestResultScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"TestResult"> | string
-    patientId?: StringWithAggregatesFilter<"TestResult"> | string
-    testId?: IntWithAggregatesFilter<"TestResult"> | number
-    dateTaken?: DateTimeWithAggregatesFilter<"TestResult"> | Date | string
-    answers?: JsonWithAggregatesFilter<"TestResult">
-    score?: IntWithAggregatesFilter<"TestResult"> | number
-  }
-
-  export type PatientCreateInput = {
-    id?: string
-    name: string
-    dob: Date | string
-    tests?: TestResultCreateNestedManyWithoutPatientInput
-  }
-
-  export type PatientUncheckedCreateInput = {
-    id?: string
-    name: string
-    dob: Date | string
-    tests?: TestResultUncheckedCreateNestedManyWithoutPatientInput
-  }
-
-  export type PatientUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    dob?: DateTimeFieldUpdateOperationsInput | Date | string
-    tests?: TestResultUpdateManyWithoutPatientNestedInput
-  }
-
-  export type PatientUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    dob?: DateTimeFieldUpdateOperationsInput | Date | string
-    tests?: TestResultUncheckedUpdateManyWithoutPatientNestedInput
-  }
-
-  export type PatientCreateManyInput = {
-    id?: string
-    name: string
-    dob: Date | string
-  }
-
-  export type PatientUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    dob?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PatientUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    dob?: DateTimeFieldUpdateOperationsInput | Date | string
+    answers?: JsonWithAggregatesFilter<"Test">
+    scores?: JsonWithAggregatesFilter<"Test">
+    completedAt?: DateTimeNullableWithAggregatesFilter<"Test"> | Date | string | null
   }
 
   export type UserCreateInput = {
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     tests?: TestCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
-    id?: number
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     tests?: TestUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tests?: TestUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tests?: TestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
-    id?: number
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestCreateInput = {
-    name: string
+    id?: string
     type: string
     createdAt?: Date | string
+    answers: JsonNullValueInput | InputJsonValue
+    scores: JsonNullValueInput | InputJsonValue
+    completedAt?: Date | string | null
     user: UserCreateNestedOneWithoutTestsInput
-    results?: TestResultCreateNestedManyWithoutTestInput
   }
 
   export type TestUncheckedCreateInput = {
-    id?: number
-    name: string
+    id?: string
     type: string
-    userId: number
+    userId: string
     createdAt?: Date | string
-    results?: TestResultUncheckedCreateNestedManyWithoutTestInput
+    answers: JsonNullValueInput | InputJsonValue
+    scores: JsonNullValueInput | InputJsonValue
+    completedAt?: Date | string | null
   }
 
   export type TestUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    answers?: JsonNullValueInput | InputJsonValue
+    scores?: JsonNullValueInput | InputJsonValue
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutTestsNestedInput
-    results?: TestResultUpdateManyWithoutTestNestedInput
   }
 
   export type TestUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    results?: TestResultUncheckedUpdateManyWithoutTestNestedInput
+    answers?: JsonNullValueInput | InputJsonValue
+    scores?: JsonNullValueInput | InputJsonValue
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TestCreateManyInput = {
-    id?: number
-    name: string
+    id?: string
     type: string
-    userId: number
+    userId: string
     createdAt?: Date | string
+    answers: JsonNullValueInput | InputJsonValue
+    scores: JsonNullValueInput | InputJsonValue
+    completedAt?: Date | string | null
   }
 
   export type TestUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    answers?: JsonNullValueInput | InputJsonValue
+    scores?: JsonNullValueInput | InputJsonValue
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TestUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TestResultCreateInput = {
-    id?: string
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-    patient: PatientCreateNestedOneWithoutTestsInput
-    test: TestCreateNestedOneWithoutResultsInput
-  }
-
-  export type TestResultUncheckedCreateInput = {
-    id?: string
-    patientId: string
-    testId: number
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-  }
-
-  export type TestResultUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
     answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
-    patient?: PatientUpdateOneRequiredWithoutTestsNestedInput
-    test?: TestUpdateOneRequiredWithoutResultsNestedInput
-  }
-
-  export type TestResultUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    testId?: IntFieldUpdateOperationsInput | number
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type TestResultCreateManyInput = {
-    id?: string
-    patientId: string
-    testId: number
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-  }
-
-  export type TestResultUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type TestResultUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    testId?: IntFieldUpdateOperationsInput | number
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
+    scores?: JsonNullValueInput | InputJsonValue
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6183,32 +3527,35 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type TestResultListRelationFilter = {
-    every?: TestResultWhereInput
-    some?: TestResultWhereInput
-    none?: TestResultWhereInput
+  export type TestListRelationFilter = {
+    every?: TestWhereInput
+    some?: TestWhereInput
+    none?: TestWhereInput
   }
 
-  export type TestResultOrderByRelationAggregateInput = {
+  export type TestOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type PatientCountOrderByAggregateInput = {
+  export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    dob?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type PatientMaxOrderByAggregateInput = {
+  export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    dob?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
-  export type PatientMinOrderByAggregateInput = {
+  export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    dob?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6242,105 +3589,6 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
-  export type TestListRelationFilter = {
-    every?: TestWhereInput
-    some?: TestWhereInput
-    none?: TestWhereInput
-  }
-
-  export type TestOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-  }
-
-  export type UserAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type UserMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-  }
-
-  export type UserMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-  }
-
-  export type UserSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
-  export type TestCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    type?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type TestAvgOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-  }
-
-  export type TestMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    type?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type TestMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    type?: SortOrder
-    userId?: SortOrder
-    createdAt?: SortOrder
-  }
-
-  export type TestSumOrderByAggregateInput = {
-    id?: SortOrder
-    userId?: SortOrder
-  }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -6365,49 +3613,51 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type PatientScalarRelationFilter = {
-    is?: PatientWhereInput
-    isNot?: PatientWhereInput
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type TestScalarRelationFilter = {
-    is?: TestWhereInput
-    isNot?: TestWhereInput
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
   }
 
-  export type TestResultCountOrderByAggregateInput = {
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type TestCountOrderByAggregateInput = {
     id?: SortOrder
-    patientId?: SortOrder
-    testId?: SortOrder
-    dateTaken?: SortOrder
+    type?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
     answers?: SortOrder
-    score?: SortOrder
+    scores?: SortOrder
+    completedAt?: SortOrder
   }
 
-  export type TestResultAvgOrderByAggregateInput = {
-    testId?: SortOrder
-    score?: SortOrder
-  }
-
-  export type TestResultMaxOrderByAggregateInput = {
+  export type TestMaxOrderByAggregateInput = {
     id?: SortOrder
-    patientId?: SortOrder
-    testId?: SortOrder
-    dateTaken?: SortOrder
-    score?: SortOrder
+    type?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    completedAt?: SortOrder
   }
 
-  export type TestResultMinOrderByAggregateInput = {
+  export type TestMinOrderByAggregateInput = {
     id?: SortOrder
-    patientId?: SortOrder
-    testId?: SortOrder
-    dateTaken?: SortOrder
-    score?: SortOrder
-  }
-
-  export type TestResultSumOrderByAggregateInput = {
-    testId?: SortOrder
-    score?: SortOrder
+    type?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    completedAt?: SortOrder
   }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -6436,54 +3686,18 @@ export namespace Prisma {
     _max?: NestedJsonFilter<$PrismaModel>
   }
 
-  export type TestResultCreateNestedManyWithoutPatientInput = {
-    create?: XOR<TestResultCreateWithoutPatientInput, TestResultUncheckedCreateWithoutPatientInput> | TestResultCreateWithoutPatientInput[] | TestResultUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: TestResultCreateOrConnectWithoutPatientInput | TestResultCreateOrConnectWithoutPatientInput[]
-    createMany?: TestResultCreateManyPatientInputEnvelope
-    connect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-  }
-
-  export type TestResultUncheckedCreateNestedManyWithoutPatientInput = {
-    create?: XOR<TestResultCreateWithoutPatientInput, TestResultUncheckedCreateWithoutPatientInput> | TestResultCreateWithoutPatientInput[] | TestResultUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: TestResultCreateOrConnectWithoutPatientInput | TestResultCreateOrConnectWithoutPatientInput[]
-    createMany?: TestResultCreateManyPatientInputEnvelope
-    connect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-  }
-
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
-  export type TestResultUpdateManyWithoutPatientNestedInput = {
-    create?: XOR<TestResultCreateWithoutPatientInput, TestResultUncheckedCreateWithoutPatientInput> | TestResultCreateWithoutPatientInput[] | TestResultUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: TestResultCreateOrConnectWithoutPatientInput | TestResultCreateOrConnectWithoutPatientInput[]
-    upsert?: TestResultUpsertWithWhereUniqueWithoutPatientInput | TestResultUpsertWithWhereUniqueWithoutPatientInput[]
-    createMany?: TestResultCreateManyPatientInputEnvelope
-    set?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    disconnect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    delete?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    connect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    update?: TestResultUpdateWithWhereUniqueWithoutPatientInput | TestResultUpdateWithWhereUniqueWithoutPatientInput[]
-    updateMany?: TestResultUpdateManyWithWhereWithoutPatientInput | TestResultUpdateManyWithWhereWithoutPatientInput[]
-    deleteMany?: TestResultScalarWhereInput | TestResultScalarWhereInput[]
-  }
-
-  export type TestResultUncheckedUpdateManyWithoutPatientNestedInput = {
-    create?: XOR<TestResultCreateWithoutPatientInput, TestResultUncheckedCreateWithoutPatientInput> | TestResultCreateWithoutPatientInput[] | TestResultUncheckedCreateWithoutPatientInput[]
-    connectOrCreate?: TestResultCreateOrConnectWithoutPatientInput | TestResultCreateOrConnectWithoutPatientInput[]
-    upsert?: TestResultUpsertWithWhereUniqueWithoutPatientInput | TestResultUpsertWithWhereUniqueWithoutPatientInput[]
-    createMany?: TestResultCreateManyPatientInputEnvelope
-    set?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    disconnect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    delete?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    connect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    update?: TestResultUpdateWithWhereUniqueWithoutPatientInput | TestResultUpdateWithWhereUniqueWithoutPatientInput[]
-    updateMany?: TestResultUpdateManyWithWhereWithoutPatientInput | TestResultUpdateManyWithWhereWithoutPatientInput[]
-    deleteMany?: TestResultScalarWhereInput | TestResultScalarWhereInput[]
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type TestCreateNestedManyWithoutUserInput = {
@@ -6500,6 +3714,14 @@ export namespace Prisma {
     connect?: TestWhereUniqueInput | TestWhereUniqueInput[]
   }
 
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type TestUpdateManyWithoutUserNestedInput = {
     create?: XOR<TestCreateWithoutUserInput, TestUncheckedCreateWithoutUserInput> | TestCreateWithoutUserInput[] | TestUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TestCreateOrConnectWithoutUserInput | TestCreateOrConnectWithoutUserInput[]
@@ -6512,14 +3734,6 @@ export namespace Prisma {
     update?: TestUpdateWithWhereUniqueWithoutUserInput | TestUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: TestUpdateManyWithWhereWithoutUserInput | TestUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: TestScalarWhereInput | TestScalarWhereInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type TestUncheckedUpdateManyWithoutUserNestedInput = {
@@ -6542,18 +3756,8 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type TestResultCreateNestedManyWithoutTestInput = {
-    create?: XOR<TestResultCreateWithoutTestInput, TestResultUncheckedCreateWithoutTestInput> | TestResultCreateWithoutTestInput[] | TestResultUncheckedCreateWithoutTestInput[]
-    connectOrCreate?: TestResultCreateOrConnectWithoutTestInput | TestResultCreateOrConnectWithoutTestInput[]
-    createMany?: TestResultCreateManyTestInputEnvelope
-    connect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-  }
-
-  export type TestResultUncheckedCreateNestedManyWithoutTestInput = {
-    create?: XOR<TestResultCreateWithoutTestInput, TestResultUncheckedCreateWithoutTestInput> | TestResultCreateWithoutTestInput[] | TestResultUncheckedCreateWithoutTestInput[]
-    connectOrCreate?: TestResultCreateOrConnectWithoutTestInput | TestResultCreateOrConnectWithoutTestInput[]
-    createMany?: TestResultCreateManyTestInputEnvelope
-    connect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type UserUpdateOneRequiredWithoutTestsNestedInput = {
@@ -6562,62 +3766,6 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutTestsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTestsInput, UserUpdateWithoutTestsInput>, UserUncheckedUpdateWithoutTestsInput>
-  }
-
-  export type TestResultUpdateManyWithoutTestNestedInput = {
-    create?: XOR<TestResultCreateWithoutTestInput, TestResultUncheckedCreateWithoutTestInput> | TestResultCreateWithoutTestInput[] | TestResultUncheckedCreateWithoutTestInput[]
-    connectOrCreate?: TestResultCreateOrConnectWithoutTestInput | TestResultCreateOrConnectWithoutTestInput[]
-    upsert?: TestResultUpsertWithWhereUniqueWithoutTestInput | TestResultUpsertWithWhereUniqueWithoutTestInput[]
-    createMany?: TestResultCreateManyTestInputEnvelope
-    set?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    disconnect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    delete?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    connect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    update?: TestResultUpdateWithWhereUniqueWithoutTestInput | TestResultUpdateWithWhereUniqueWithoutTestInput[]
-    updateMany?: TestResultUpdateManyWithWhereWithoutTestInput | TestResultUpdateManyWithWhereWithoutTestInput[]
-    deleteMany?: TestResultScalarWhereInput | TestResultScalarWhereInput[]
-  }
-
-  export type TestResultUncheckedUpdateManyWithoutTestNestedInput = {
-    create?: XOR<TestResultCreateWithoutTestInput, TestResultUncheckedCreateWithoutTestInput> | TestResultCreateWithoutTestInput[] | TestResultUncheckedCreateWithoutTestInput[]
-    connectOrCreate?: TestResultCreateOrConnectWithoutTestInput | TestResultCreateOrConnectWithoutTestInput[]
-    upsert?: TestResultUpsertWithWhereUniqueWithoutTestInput | TestResultUpsertWithWhereUniqueWithoutTestInput[]
-    createMany?: TestResultCreateManyTestInputEnvelope
-    set?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    disconnect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    delete?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    connect?: TestResultWhereUniqueInput | TestResultWhereUniqueInput[]
-    update?: TestResultUpdateWithWhereUniqueWithoutTestInput | TestResultUpdateWithWhereUniqueWithoutTestInput[]
-    updateMany?: TestResultUpdateManyWithWhereWithoutTestInput | TestResultUpdateManyWithWhereWithoutTestInput[]
-    deleteMany?: TestResultScalarWhereInput | TestResultScalarWhereInput[]
-  }
-
-  export type PatientCreateNestedOneWithoutTestsInput = {
-    create?: XOR<PatientCreateWithoutTestsInput, PatientUncheckedCreateWithoutTestsInput>
-    connectOrCreate?: PatientCreateOrConnectWithoutTestsInput
-    connect?: PatientWhereUniqueInput
-  }
-
-  export type TestCreateNestedOneWithoutResultsInput = {
-    create?: XOR<TestCreateWithoutResultsInput, TestUncheckedCreateWithoutResultsInput>
-    connectOrCreate?: TestCreateOrConnectWithoutResultsInput
-    connect?: TestWhereUniqueInput
-  }
-
-  export type PatientUpdateOneRequiredWithoutTestsNestedInput = {
-    create?: XOR<PatientCreateWithoutTestsInput, PatientUncheckedCreateWithoutTestsInput>
-    connectOrCreate?: PatientCreateOrConnectWithoutTestsInput
-    upsert?: PatientUpsertWithoutTestsInput
-    connect?: PatientWhereUniqueInput
-    update?: XOR<XOR<PatientUpdateToOneWithWhereWithoutTestsInput, PatientUpdateWithoutTestsInput>, PatientUncheckedUpdateWithoutTestsInput>
-  }
-
-  export type TestUpdateOneRequiredWithoutResultsNestedInput = {
-    create?: XOR<TestCreateWithoutResultsInput, TestUncheckedCreateWithoutResultsInput>
-    connectOrCreate?: TestCreateOrConnectWithoutResultsInput
-    upsert?: TestUpsertWithoutResultsInput
-    connect?: TestWhereUniqueInput
-    update?: XOR<XOR<TestUpdateToOneWithWhereWithoutResultsInput, TestUpdateWithoutResultsInput>, TestUncheckedUpdateWithoutResultsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6687,31 +3835,15 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -6737,73 +3869,47 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type TestResultCreateWithoutPatientInput = {
-    id?: string
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-    test: TestCreateNestedOneWithoutResultsInput
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type TestResultUncheckedCreateWithoutPatientInput = {
-    id?: string
-    testId: number
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-  }
-
-  export type TestResultCreateOrConnectWithoutPatientInput = {
-    where: TestResultWhereUniqueInput
-    create: XOR<TestResultCreateWithoutPatientInput, TestResultUncheckedCreateWithoutPatientInput>
-  }
-
-  export type TestResultCreateManyPatientInputEnvelope = {
-    data: TestResultCreateManyPatientInput | TestResultCreateManyPatientInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type TestResultUpsertWithWhereUniqueWithoutPatientInput = {
-    where: TestResultWhereUniqueInput
-    update: XOR<TestResultUpdateWithoutPatientInput, TestResultUncheckedUpdateWithoutPatientInput>
-    create: XOR<TestResultCreateWithoutPatientInput, TestResultUncheckedCreateWithoutPatientInput>
-  }
-
-  export type TestResultUpdateWithWhereUniqueWithoutPatientInput = {
-    where: TestResultWhereUniqueInput
-    data: XOR<TestResultUpdateWithoutPatientInput, TestResultUncheckedUpdateWithoutPatientInput>
-  }
-
-  export type TestResultUpdateManyWithWhereWithoutPatientInput = {
-    where: TestResultScalarWhereInput
-    data: XOR<TestResultUpdateManyMutationInput, TestResultUncheckedUpdateManyWithoutPatientInput>
-  }
-
-  export type TestResultScalarWhereInput = {
-    AND?: TestResultScalarWhereInput | TestResultScalarWhereInput[]
-    OR?: TestResultScalarWhereInput[]
-    NOT?: TestResultScalarWhereInput | TestResultScalarWhereInput[]
-    id?: StringFilter<"TestResult"> | string
-    patientId?: StringFilter<"TestResult"> | string
-    testId?: IntFilter<"TestResult"> | number
-    dateTaken?: DateTimeFilter<"TestResult"> | Date | string
-    answers?: JsonFilter<"TestResult">
-    score?: IntFilter<"TestResult"> | number
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type TestCreateWithoutUserInput = {
-    name: string
+    id?: string
     type: string
     createdAt?: Date | string
-    results?: TestResultCreateNestedManyWithoutTestInput
+    answers: JsonNullValueInput | InputJsonValue
+    scores: JsonNullValueInput | InputJsonValue
+    completedAt?: Date | string | null
   }
 
   export type TestUncheckedCreateWithoutUserInput = {
-    id?: number
-    name: string
+    id?: string
     type: string
     createdAt?: Date | string
-    results?: TestResultUncheckedCreateNestedManyWithoutTestInput
+    answers: JsonNullValueInput | InputJsonValue
+    scores: JsonNullValueInput | InputJsonValue
+    completedAt?: Date | string | null
   }
 
   export type TestCreateOrConnectWithoutUserInput = {
@@ -6836,51 +3942,32 @@ export namespace Prisma {
     AND?: TestScalarWhereInput | TestScalarWhereInput[]
     OR?: TestScalarWhereInput[]
     NOT?: TestScalarWhereInput | TestScalarWhereInput[]
-    id?: IntFilter<"Test"> | number
-    name?: StringFilter<"Test"> | string
+    id?: StringFilter<"Test"> | string
     type?: StringFilter<"Test"> | string
-    userId?: IntFilter<"Test"> | number
+    userId?: StringFilter<"Test"> | string
     createdAt?: DateTimeFilter<"Test"> | Date | string
+    answers?: JsonFilter<"Test">
+    scores?: JsonFilter<"Test">
+    completedAt?: DateTimeNullableFilter<"Test"> | Date | string | null
   }
 
   export type UserCreateWithoutTestsInput = {
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UserUncheckedCreateWithoutTestsInput = {
-    id?: number
+    id?: string
     name: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type UserCreateOrConnectWithoutTestsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutTestsInput, UserUncheckedCreateWithoutTestsInput>
-  }
-
-  export type TestResultCreateWithoutTestInput = {
-    id?: string
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-    patient: PatientCreateNestedOneWithoutTestsInput
-  }
-
-  export type TestResultUncheckedCreateWithoutTestInput = {
-    id?: string
-    patientId: string
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-  }
-
-  export type TestResultCreateOrConnectWithoutTestInput = {
-    where: TestResultWhereUniqueInput
-    create: XOR<TestResultCreateWithoutTestInput, TestResultUncheckedCreateWithoutTestInput>
-  }
-
-  export type TestResultCreateManyTestInputEnvelope = {
-    data: TestResultCreateManyTestInput | TestResultCreateManyTestInput[]
-    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutTestsInput = {
@@ -6895,207 +3982,53 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutTestsInput = {
+    id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateWithoutTestsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type TestResultUpsertWithWhereUniqueWithoutTestInput = {
-    where: TestResultWhereUniqueInput
-    update: XOR<TestResultUpdateWithoutTestInput, TestResultUncheckedUpdateWithoutTestInput>
-    create: XOR<TestResultCreateWithoutTestInput, TestResultUncheckedCreateWithoutTestInput>
-  }
-
-  export type TestResultUpdateWithWhereUniqueWithoutTestInput = {
-    where: TestResultWhereUniqueInput
-    data: XOR<TestResultUpdateWithoutTestInput, TestResultUncheckedUpdateWithoutTestInput>
-  }
-
-  export type TestResultUpdateManyWithWhereWithoutTestInput = {
-    where: TestResultScalarWhereInput
-    data: XOR<TestResultUpdateManyMutationInput, TestResultUncheckedUpdateManyWithoutTestInput>
-  }
-
-  export type PatientCreateWithoutTestsInput = {
-    id?: string
-    name: string
-    dob: Date | string
-  }
-
-  export type PatientUncheckedCreateWithoutTestsInput = {
-    id?: string
-    name: string
-    dob: Date | string
-  }
-
-  export type PatientCreateOrConnectWithoutTestsInput = {
-    where: PatientWhereUniqueInput
-    create: XOR<PatientCreateWithoutTestsInput, PatientUncheckedCreateWithoutTestsInput>
-  }
-
-  export type TestCreateWithoutResultsInput = {
-    name: string
-    type: string
-    createdAt?: Date | string
-    user: UserCreateNestedOneWithoutTestsInput
-  }
-
-  export type TestUncheckedCreateWithoutResultsInput = {
-    id?: number
-    name: string
-    type: string
-    userId: number
-    createdAt?: Date | string
-  }
-
-  export type TestCreateOrConnectWithoutResultsInput = {
-    where: TestWhereUniqueInput
-    create: XOR<TestCreateWithoutResultsInput, TestUncheckedCreateWithoutResultsInput>
-  }
-
-  export type PatientUpsertWithoutTestsInput = {
-    update: XOR<PatientUpdateWithoutTestsInput, PatientUncheckedUpdateWithoutTestsInput>
-    create: XOR<PatientCreateWithoutTestsInput, PatientUncheckedCreateWithoutTestsInput>
-    where?: PatientWhereInput
-  }
-
-  export type PatientUpdateToOneWithWhereWithoutTestsInput = {
-    where?: PatientWhereInput
-    data: XOR<PatientUpdateWithoutTestsInput, PatientUncheckedUpdateWithoutTestsInput>
-  }
-
-  export type PatientUpdateWithoutTestsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    dob?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PatientUncheckedUpdateWithoutTestsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    dob?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TestUpsertWithoutResultsInput = {
-    update: XOR<TestUpdateWithoutResultsInput, TestUncheckedUpdateWithoutResultsInput>
-    create: XOR<TestCreateWithoutResultsInput, TestUncheckedCreateWithoutResultsInput>
-    where?: TestWhereInput
-  }
-
-  export type TestUpdateToOneWithWhereWithoutResultsInput = {
-    where?: TestWhereInput
-    data: XOR<TestUpdateWithoutResultsInput, TestUncheckedUpdateWithoutResultsInput>
-  }
-
-  export type TestUpdateWithoutResultsInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutTestsNestedInput
-  }
-
-  export type TestUncheckedUpdateWithoutResultsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    type?: StringFieldUpdateOperationsInput | string
-    userId?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TestResultCreateManyPatientInput = {
-    id?: string
-    testId: number
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-  }
-
-  export type TestResultUpdateWithoutPatientInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
-    test?: TestUpdateOneRequiredWithoutResultsNestedInput
-  }
-
-  export type TestResultUncheckedUpdateWithoutPatientInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    testId?: IntFieldUpdateOperationsInput | number
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type TestResultUncheckedUpdateManyWithoutPatientInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    testId?: IntFieldUpdateOperationsInput | number
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TestCreateManyUserInput = {
-    id?: number
-    name: string
+    id?: string
     type: string
     createdAt?: Date | string
+    answers: JsonNullValueInput | InputJsonValue
+    scores: JsonNullValueInput | InputJsonValue
+    completedAt?: Date | string | null
   }
 
   export type TestUpdateWithoutUserInput = {
-    name?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    results?: TestResultUpdateManyWithoutTestNestedInput
+    answers?: JsonNullValueInput | InputJsonValue
+    scores?: JsonNullValueInput | InputJsonValue
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TestUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    results?: TestResultUncheckedUpdateManyWithoutTestNestedInput
+    answers?: JsonNullValueInput | InputJsonValue
+    scores?: JsonNullValueInput | InputJsonValue
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type TestUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     type?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TestResultCreateManyTestInput = {
-    id?: string
-    patientId: string
-    dateTaken?: Date | string
-    answers: JsonNullValueInput | InputJsonValue
-    score: number
-  }
-
-  export type TestResultUpdateWithoutTestInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
     answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
-    patient?: PatientUpdateOneRequiredWithoutTestsNestedInput
-  }
-
-  export type TestResultUncheckedUpdateWithoutTestInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type TestResultUncheckedUpdateManyWithoutTestInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    patientId?: StringFieldUpdateOperationsInput | string
-    dateTaken?: DateTimeFieldUpdateOperationsInput | Date | string
-    answers?: JsonNullValueInput | InputJsonValue
-    score?: IntFieldUpdateOperationsInput | number
+    scores?: JsonNullValueInput | InputJsonValue
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

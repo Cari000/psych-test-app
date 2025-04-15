@@ -1,0 +1,385 @@
+{
+  "nome_teste": "SCL-90-R (Symptom Checklist-90-Revised)",
+  "instrucoes": "Avalie cada sintoma de 0 (Nenhum) a 4 (Extremamente) com base no quanto ele o incomodou nos últimos 7 dias.",
+  "escala": {
+    "0": "Nenhum",
+    "1": "Um pouco",
+    "2": "Moderadamente",
+    "3": "Bastante",
+    "4": "Extremamente"
+  },
+  "dimensoes": {
+    "Somatizacao": [1, 4, 12, 27, 40, 42, 48, 49, 52, 53, 56, 58],
+    "Obsessao-Compulsao": [3, 9, 10, 28, 38, 45, 46, 51, 55, 65],
+    "Sensibilidade_Interpessoal": [6, 21, 34, 36, 37, 41, 61, 69, 73],
+    "Depressao": [5, 14, 15, 20, 22, 26, 29, 30, 31, 32, 54, 71, 79],
+    "Ansiedade": [2, 17, 23, 33, 39, 57, 72, 78, 80, 86],
+    "Hostilidade": [11, 24, 63, 67, 74, 81],
+    "Ansiedade_Fobica": [13, 25, 47, 50, 70, 75, 82],
+    "Ideacao_Paranoides": [8, 18, 43, 68, 76, 83],
+    "Psicoticismo": [7, 16, 35, 62, 77, 84, 85, 87, 88, 90],
+    "Outros_Itens": [19, 44, 59, 60, 64, 66, 89]
+  },
+  "perguntas": [
+    {
+      "id": 1,
+      "texto": "Dores de cabeça"
+    },
+    {
+      "id": 2,
+      "texto": "Nervosismo ou tremores internos"
+    },
+    {
+      "id": 3,
+      "texto": "Pensamentos repetitivos e desagradáveis"
+    },
+    {
+      "id": 4,
+      "texto": "Desmaios ou tonturas"
+    },
+    {
+      "id": 5,
+      "texto": "Falta de interesse sexual"
+    },
+    {
+      "id": 6,
+      "texto": "Sensação de que os outros são críticos ou hostis"
+    },
+    {
+      "id": 7,
+      "texto": "A ideia de que algo está errado com sua mente"
+    },
+    {
+      "id": 8,
+      "texto": "Sentir que os outros são indiferentes ou não se importam com você"
+    },
+    {
+      "id": 9,
+      "texto": "Preocupação excessiva com limpeza ou organização"
+    },
+    {
+      "id": 10,
+      "texto": "Dificuldade em tomar decisões"
+    },
+    {
+      "id": 11,
+      "texto": "Sentir-se irritado ou frustrado facilmente"
+    },
+    {
+      "id": 12,
+      "texto": "Dores no peito ou palpitações"
+    },
+    {
+      "id": 13,
+      "texto": "Medo de lugares abertos ou multidões"
+    },
+    {
+      "id": 14,
+      "texto": "Sentimentos de desesperança"
+    },
+    {
+      "id": 15,
+      "texto": "Pensamentos de morte ou suicídio"
+    },
+    {
+      "id": 16,
+      "texto": "Sensação de estar sendo observado ou seguido"
+    },
+    {
+      "id": 17,
+      "texto": "Tensão ou inquietação"
+    },
+    {
+      "id": 18,
+      "texto": "Desconfiança excessiva"
+    },
+    {
+      "id": 19,
+      "texto": "Problemas de apetite (comer muito ou pouco)"
+    },
+    {
+      "id": 20,
+      "texto": "Chorar facilmente"
+    },
+    {
+      "id": 21,
+      "texto": "Sentir-se inferior aos outros"
+    },
+    {
+      "id": 22,
+      "texto": "Dores musculares ou rigidez"
+    },
+    {
+      "id": 23,
+      "texto": "Preocupação constante com segurança"
+    },
+    {
+      "id": 24,
+      "texto": "Ataques de raiva ou impulsividade"
+    },
+    {
+      "id": 25,
+      "texto": "Medo de viajar sozinho(a)"
+    },
+    {
+      "id": 26,
+      "texto": "Sentir-se solitário(a)"
+    },
+    {
+      "id": 27,
+      "texto": "Náuseas ou problemas estomacais"
+    },
+    {
+      "id": 28,
+      "texto": "Sensação de vazio emocional"
+    },
+    {
+      "id": 29,
+      "texto": "Sentir-se sobrecarregado(a)"
+    },
+    {
+      "id": 30,
+      "texto": "Pensamentos de autodepreciação"
+    },
+    {
+      "id": 31,
+      "texto": "Sentir-se triste ou deprimido(a)"
+    },
+    {
+      "id": 32,
+      "texto": "Sentir-se agitado(a) ou inquieto(a)"
+    },
+    {
+      "id": 33,
+      "texto": "Preocupação excessiva com saúde"
+    },
+    {
+      "id": 34,
+      "texto": "Sentir-se desconfortável perto de outras pessoas"
+    },
+    {
+      "id": 35,
+      "texto": "Pensamentos estranhos ou incomuns"
+    },
+    {
+      "id": 36,
+      "texto": "Dificuldade em controlar emoções"
+    },
+    {
+      "id": 37,
+      "texto": "Sentir-se rejeitado(a)"
+    },
+    {
+      "id": 38,
+      "texto": "Comportamentos repetitivos (ex.: lavar as mãos excessivamente)"
+    },
+    {
+      "id": 39,
+      "texto": "Dificuldade em relaxar"
+    },
+    {
+      "id": 40,
+      "texto": "Dificuldade em engolir"
+    },
+    {
+      "id": 41,
+      "texto": "Comparar-se negativamente com os outros"
+    },
+    {
+      "id": 42,
+      "texto": "Dores nas costas"
+    },
+    {
+      "id": 43,
+      "texto": "Sentir que alguém pode controlar seus pensamentos"
+    },
+    {
+      "id": 44,
+      "texto": "Dificuldades para dormir"
+    },
+    {
+      "id": 45,
+      "texto": "Verificar coisas repetidamente (ex.: portas trancadas)"
+    },
+    {
+      "id": 46,
+      "texto": "Dificuldade em concentrar-se"
+    },
+    {
+      "id": 47,
+      "texto": "Medo de animais ou insetos"
+    },
+    {
+      "id": 48,
+      "texto": "Dores nas pernas ou braços"
+    },
+    {
+      "id": 49,
+      "texto": "Sensação de falta de ar"
+    },
+    {
+      "id": 50,
+      "texto": "Medo de dirigir ou andar de transporte público"
+    },
+    {
+      "id": 51,
+      "texto": "Pensamentos indesejados perturbadores"
+    },
+    {
+      "id": 52,
+      "texto": "Sensação de fraqueza em partes do corpo"
+    },
+    {
+      "id": 53,
+      "texto": "Sensação de pressão na cabeça"
+    },
+    {
+      "id": 54,
+      "texto": "Pensamentos lentos ou confusos"
+    },
+    {
+      "id": 55,
+      "texto": "Sentir-se preso(a) em hábitos ou rotinas"
+    },
+    {
+      "id": 56,
+      "texto": "Sensação de dormência ou formigamento"
+    },
+    {
+      "id": 57,
+      "texto": "Preocupação com ataques de pânico"
+    },
+    {
+      "id": 58,
+      "texto": "Sensação de desmaio"
+    },
+    {
+      "id": 59,
+      "texto": "Discussões frequentes"
+    },
+    {
+      "id": 60,
+      "texto": "Sentir-se culpado(a)"
+    },
+    {
+      "id": 61,
+      "texto": "Preocupação com o que os outros pensam"
+    },
+    {
+      "id": 62,
+      "texto": "Ouvir vozes que outros não ouvem"
+    },
+    {
+      "id": 63,
+      "texto": "Explosões de raiva"
+    },
+    {
+      "id": 64,
+      "texto": "Pensar em machucar a si mesmo(a)"
+    },
+    {
+      "id": 65,
+      "texto": "Necessidade de fazer coisas de forma perfeita"
+    },
+    {
+      "id": 66,
+      "texto": "Dificuldade em lembrar coisas"
+    },
+    {
+      "id": 67,
+      "texto": "Sentir-se traído(a) ou enganado(a)"
+    },
+    {
+      "id": 68,
+      "texto": "Acreditar que outros estão falando de você"
+    },
+    {
+      "id": 69,
+      "texto": "Sentir-se tímido(a) ou inibido(a)"
+    },
+    {
+      "id": 70,
+      "texto": "Medo de ficar sozinho(a)"
+    },
+    {
+      "id": 71,
+      "texto": "Sentir-se sem energia"
+    },
+    {
+      "id": 72,
+      "texto": "Preocupação com doenças graves"
+    },
+    {
+      "id": 73,
+      "texto": "Sentir-se desconfortável ao ser olhado"
+    },
+    {
+      "id": 74,
+      "texto": "Ataques verbais ou físicos"
+    },
+    {
+      "id": 75,
+      "texto": "Medo de altura ou elevadores"
+    },
+    {
+      "id": 76,
+      "texto": "Acreditar que está sendo perseguido(a)"
+    },
+    {
+      "id": 77,
+      "texto": "Pensamentos sobre o fim do mundo"
+    },
+    {
+      "id": 78,
+      "texto": "Sensação de que algo terrível vai acontecer"
+    },
+    {
+      "id": 79,
+      "texto": "Sentir-se sem valor"
+    },
+    {
+      "id": 80,
+      "texto": "Preocupação com desgraças futuras"
+    },
+    {
+      "id": 81,
+      "texto": "Desejo de quebrar coisas"
+    },
+    {
+      "id": 82,
+      "texto": "Medo de sangue ou ferimentos"
+    },
+    {
+      "id": 83,
+      "texto": "Acreditar que está sendo testado(a)"
+    },
+    {
+      "id": 84,
+      "texto": "Ter visões ou imagens estranhas"
+    },
+    {
+      "id": 85,
+      "texto": "Dificuldade em aceitar críticas"
+    },
+    {
+      "id": 86,
+      "texto": "Sensação de pânico sem motivo"
+    },
+    {
+      "id": 87,
+      "texto": "Sentir-se distante de outras pessoas"
+    },
+    {
+      "id": 88,
+      "texto": "Pensamentos sobre poderes especiais"
+    },
+    {
+      "id": 89,
+      "texto": "Sentir-se culpado(a) por coisas pequenas"
+    },
+    {
+      "id": 90,
+      "texto": "Ter crenças incomuns"
+    }
+  ]
+}
