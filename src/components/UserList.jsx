@@ -11,7 +11,8 @@ export default function UserList({ refreshTrigger }) {
     const fetchUsers = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("http://localhost:4000/api/users");
+        const apiUrl = import.meta.env.VITE_API_URL || "";
+        const response = await fetch(`${apiUrl}/api/users`);
         if (!response.ok) throw new Error("Failed to fetch users");
         const data = await response.json();
         setUsers(data);

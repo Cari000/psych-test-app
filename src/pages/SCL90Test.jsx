@@ -36,8 +36,10 @@ export default function SCL90Test() {
     setIsSubmitting(true);
     const scores = calculateScores();
     const createdAt = new Date().toISOString(); 
+
+    const apiUrl = import.meta.env.VITE_API_URL || "";
     try {
-      const response = await fetch(`http://localhost:4000/api/users/${id}/tests`, {
+      const response = await fetch(`${apiUrl}/api/users/${id}/tests`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

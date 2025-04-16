@@ -56,9 +56,12 @@ export default function UserProfile() {
     if (user) {
       const fetchTestScores = async () => {
         setIsFetchingScores(true);
+
+        const apiUrl = import.meta.env.VITE_API_URL || "";
+
         try {
           // Fetch real tests from API
-          const response = await fetch(`http://localhost:4000/api/users/${id}/tests`);
+          const response = await fetch(`${apiUrl}/api/users/${id}/tests`);
           const realTests = await response.json();
           
           // Combine real tests with sample tests
